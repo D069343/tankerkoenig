@@ -1,0 +1,14 @@
+== version=1
+COLUMN TABLE "STATIONS_ST_POINT"(
+	"uuid" NVARCHAR(50),
+	"name" NVARCHAR(1000),
+	"brand" NVARCHAR(1000),
+	"street" NVARCHAR(500),
+	"house_number" NVARCHAR(100),
+	"post_code" NVARCHAR(10),
+	"city" NVARCHAR(100),
+	"latitude" DOUBLE,
+	"longtitude" DOUBLE,
+	"location_dimension" ST_GEOMETRY(3857)
+)
+UNLOAD PRIORITY 5 AUTO MERGE;
