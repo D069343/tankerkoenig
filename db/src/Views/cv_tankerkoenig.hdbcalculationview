@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="cv_tankerkoenig" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="cv_tankerkoenig"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PRICES_RESTAPI">
+    <resourceUri>PRICES_RESTAPI</resourceUri>
+  </DataSource>
+  <DataSource id="STATIONS_MASTER">
+    <resourceUri>STATIONS_MASTER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="DATE" aggregationType="min"/>
+      <viewAttribute id="STATION_UUID"/>
+      <viewAttribute id="DIESEL" aggregationType="sum"/>
+      <viewAttribute id="E5" aggregationType="sum"/>
+      <viewAttribute id="E10" aggregationType="sum"/>
+      <viewAttribute id="DIESELCHANGE" aggregationType="sum"/>
+      <viewAttribute id="E5CHANGE" aggregationType="sum"/>
+      <viewAttribute id="E10CHANGE" aggregationType="sum"/>
+      <viewAttribute id="uuid"/>
+      <viewAttribute id="name"/>
+      <viewAttribute id="brand"/>
+      <viewAttribute id="street"/>
+      <viewAttribute id="house_number"/>
+      <viewAttribute id="post_code"/>
+      <viewAttribute id="city"/>
+      <viewAttribute id="latitude" aggregationType="sum"/>
+      <viewAttribute id="longtitude" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PRICES_RESTAPI">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATION_UUID" source="STATION_UUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIESEL" source="DIESEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="E5" source="E5"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="E10" source="E10"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIESELCHANGE" source="DIESELCHANGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="E5CHANGE" source="E5CHANGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="E10CHANGE" source="E10CHANGE"/>
+    </input>
+    <input node="STATIONS_MASTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="uuid" source="uuid"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="brand" source="brand"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="street" source="street"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="house_number" source="house_number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="post_code" source="post_code"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="city" source="city"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="latitude" source="latitude"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="longtitude" source="longtitude"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATION_UUID" source="uuid"/>
+    </input>
+    <joinAttribute name="STATION_UUID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="DATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="uuid" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="uuid"/>
+      <keyMapping columnObjectName="Join_1" columnName="uuid"/>
+    </attribute>
+    <attribute id="name" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="name"/>
+      <keyMapping columnObjectName="Join_1" columnName="name"/>
+    </attribute>
+    <attribute id="brand" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="brand"/>
+      <keyMapping columnObjectName="Join_1" columnName="brand"/>
+    </attribute>
+    <attribute id="street" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="street"/>
+      <keyMapping columnObjectName="Join_1" columnName="street"/>
+    </attribute>
+    <attribute id="house_number" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="house_number"/>
+      <keyMapping columnObjectName="Join_1" columnName="house_number"/>
+    </attribute>
+    <attribute id="post_code" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="post_code"/>
+      <keyMapping columnObjectName="Join_1" columnName="post_code"/>
+    </attribute>
+    <attribute id="city" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="city"/>
+      <keyMapping columnObjectName="Join_1" columnName="city"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DIESEL" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DIESEL"/>
+      <measureMapping columnObjectName="Join_1" columnName="DIESEL"/>
+    </measure>
+    <measure id="E5" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="E5"/>
+      <measureMapping columnObjectName="Join_1" columnName="E5"/>
+    </measure>
+    <measure id="E10" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="E10"/>
+      <measureMapping columnObjectName="Join_1" columnName="E10"/>
+    </measure>
+    <measure id="DIESELCHANGE" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DIESELCHANGE"/>
+      <measureMapping columnObjectName="Join_1" columnName="DIESELCHANGE"/>
+    </measure>
+    <measure id="E5CHANGE" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="E5CHANGE"/>
+      <measureMapping columnObjectName="Join_1" columnName="E5CHANGE"/>
+    </measure>
+    <measure id="E10CHANGE" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="E10CHANGE"/>
+      <measureMapping columnObjectName="Join_1" columnName="E10CHANGE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="202"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="PRICES_RESTAPI" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="18" y="23"/>
+      <rectangleSize width="172.18994140625"/>
+    </shape>
+    <shape modelObjectName="STATIONS_MASTER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="180.2265625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
