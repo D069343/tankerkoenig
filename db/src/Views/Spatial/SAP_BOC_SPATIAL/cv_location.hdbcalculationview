@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_BOC_SPATIAL::cv_location" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="cv_location.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="STATIONS_ST_POINT">
+    <resourceUri>STATIONS_ST_POINT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="STATIONS_ST_POINT">
+  <attributes>
+    <attribute id="uuid" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="uuid"/>
+      <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="uuid"/>
+    </attribute>
+    <attribute id="location_dimension" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="location_dimension"/>
+      <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="location_dimension"/>
+    </attribute>
+    <attribute id="city" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="city"/>
+      <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="city"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="latitude" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="latitude"/>
+      <measureMapping columnObjectName="STATIONS_ST_POINT" columnName="latitude"/>
+    </measure>
+    <measure id="longtitude" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="longtitude"/>
+      <measureMapping columnObjectName="STATIONS_ST_POINT" columnName="longtitude"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
