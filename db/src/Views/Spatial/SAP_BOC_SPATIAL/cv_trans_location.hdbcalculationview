@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_BOC_SPATIAL::cv_location" applyPrivilegeType="NONE" dataCategory="DIMENSION" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="cv_location.hdbcalculationview"/>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_BOC_SPATIAL::cv_trans_location" applyPrivilegeType="NONE" dataCategory="DIMENSION" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="cv_trans_location.hdbcalculationview"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
@@ -15,25 +15,22 @@
       <descriptions defaultDescription="uuid"/>
       <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="uuid"/>
     </attribute>
-    <attribute id="location_dimension" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="location_dimension"/>
-      <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="location_dimension"/>
-    </attribute>
-    <attribute id="city_loc" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="city"/>
-      <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="city"/>
-    </attribute>
-  
-    <attribute id="latitude" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="latitude" order="2" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="latitude"/>
       <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="latitude"/>
     </attribute>
-    <attribute id="longtitude" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="longtitude" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="longtitude"/>
       <keyMapping columnObjectName="STATIONS_ST_POINT" columnName="longtitude"/>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="CC_1" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="ST_POINT" expressionLanguage="SQL">
+        <formula>ST_Transform(ST_GeomFromText('POINT(' || &quot;longtitude&quot; || ' ' || &quot;latitude&quot; || ')', 4326),3857)</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/></logicalModel>

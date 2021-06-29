@@ -59,7 +59,7 @@
   </calculationView>
 </calculationViews>
 
-<logicalModel id="Join_1">
+<logicalModel id="Join_1" filterExpressionLanguage="SQL">
   <attributes>
     <attribute id="DATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DATE"/>
@@ -124,26 +124,31 @@
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
+
+
+  <filter>&quot;E10&quot;!= 0</filter>
+
 </logicalModel>
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+      <upperLeftCorner x="56" y="105"/>
+    
+      <rectangleSize width="159"/>
     </shape>
     
   
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="100" y="202"/>
+      <upperLeftCorner x="-62" y="312"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="PRICES_RESTAPI" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="18" y="23"/>
-      <rectangleSize width="172.18994140625"/>
+      <rectangleSize width="172"/>
     </shape>
     <shape modelObjectName="STATIONS_MASTER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="180.2265625"/>
-    </shape>
-  </shapes>
+      <rectangleSize width="180"/>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>

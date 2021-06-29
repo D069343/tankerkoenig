@@ -1,4 +1,4 @@
-== version=1
+== version=2
 COLUMN TABLE "STATIONS_ST_POINT"(
 	"uuid" NVARCHAR(50),
 	"name" NVARCHAR(1000),
@@ -9,6 +9,11 @@ COLUMN TABLE "STATIONS_ST_POINT"(
 	"city" NVARCHAR(100),
 	"latitude" DOUBLE,
 	"longtitude" DOUBLE,
-	"location_dimension" ST_GEOMETRY(3857)
+    "location_dimension" ST_GEOMETRY(3857),
+    "COUNTRY" NVARCHAR(256)
 )
 UNLOAD PRIORITY 5 AUTO MERGE;
+
+== migration=2 
+ALTER TABLE "STATIONS_ST_POINT" ADD ("COUNTRY" NVARCHAR(256));
+
